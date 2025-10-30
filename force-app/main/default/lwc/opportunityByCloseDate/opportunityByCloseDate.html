@@ -1,0 +1,73 @@
+<template>
+    <lightning-card title="Opportunities Calendar">
+        <template if:true={buckets}>
+            <template for:each={buckets} for:item="group">
+                <lightning-card key={group.timeframe} title={group.timeframe} class="slds-m-around_medium">
+                    <lightning-datatable
+                        key-field="Id"
+                        data={group.records}
+                        columns={columns}>
+                    </lightning-datatable>
+
+                    <template if:false={group.records.length}>
+                        <p class="slds-p-around_small">No opportunities</p>
+                    </template>
+                </lightning-card>
+            </template>
+        </template>
+
+        <template if:true={calendarMonths}>
+            <template for:each={calendarMonths} for:item="month">
+                <div key={month.monthName} class="slds-m-around_medium">
+                    <div class="month-header" onclick={toggleMonth}>
+                        <strong>{month.monthName}</strong>
+                        <span class="toggle-indicator">{month.toggleIndicator}</span>
+                    </div>
+
+                    <template if:true={month.isExpanded}>
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer calendar-table">
+                            <thead>
+                                <tr>
+                                    <th>Sun</th>
+                                    <th>Mon</th>
+                                    <th>Tue</th>
+                                    <th>Wed</th>
+                                    <th>Thu</th>
+                                    <th>Fri</th>
+                                    <th>Sat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={month.weeks} for:item="week">
+                                    <tr key={week.weekIndex}>
+                                        <template for:each={week.days} for:item="day">
+                                            <td key={day.day} class="day-cell">
+                                                <template if:true={day.day}>
+                                                    <div class="day-container">
+                                                        <span class="day-number">{day.day}</span>
+                                                        <div class="opportunity-list">
+                                                            <template for:each={day.opportunities} for:item="opp">
+                                                                <a href={opp.opportunityLink} target="_blank"
+                                                                   class="opportunity {opp.bucketClass}" key={opp.Id}>
+                                                                    {opp.opportunityName}
+                                                                </a>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </td>
+                                        </template>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </template>
+                </div>
+            </template>
+        </template>
+
+        <template if:true={error}>
+            <div class="slds-text-color_error slds-p-around_medium">{error}</div>
+        </template>
+    </lightning-card>
+</template>

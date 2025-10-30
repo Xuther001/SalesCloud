@@ -1,0 +1,76 @@
+.month-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #d8dde6;
+}
+
+.toggle-indicator {
+    font-weight: bold;
+}
+
+.day-cell {
+    vertical-align: top;
+    padding: 2px;
+}
+
+.day-container {
+    border: 1px solid #d8dde6;
+    border-radius: 5px;
+    min-height: 100px;
+    width: 120px;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+.day-number {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.opportunity-list {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.opportunity {
+    display: block;
+    margin-bottom: 2px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #000;
+}
+
+/* Bucket colors */
+.opportunity.within2Weeks { background-color: #FFEBEE; }       /* Light red */
+.opportunity.twoWeeksTo1Month { background-color: #FFF3E0; }   /* Light orange */
+.opportunity.oneTo3Months { background-color: #E8F5E9; }       /* Light green */
+.opportunity.threeTo6Months { background-color: #E3F2FD; }     /* Light blue */
+
+.opportunity:hover { background-color: #cfd8dc; }
+
+.calendar-table td {
+    vertical-align: top;
+}
+
+/* Optional scroll styling for long lists */
+.opportunity-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.opportunity-list::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 3px;
+}
+
+.opportunity-list::-webkit-scrollbar-thumb:hover {
+    background-color: #a1a1a1;
+}
