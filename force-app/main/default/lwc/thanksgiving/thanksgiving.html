@@ -1,0 +1,24 @@
+<template>
+    <div class="thanksgiving-container" style={backgroundStyle}>
+        <!-- Left: Thanksgiving Scene -->
+        <img src={wagonFoodImg} alt="Wagon with Food" class="wagon-food"/>
+        <img src={pilgrimsImg} alt="Pilgrims" class="pilgrims"/>
+        <img src={pumpkinsImg} alt="Pumpkins" class="pumpkins"/>
+        <img src={squirrelsImg} alt="Squirrels" class="squirrels"/>
+        <img src={campfireImg} alt="Campfire" class="campfire"/>
+
+        <!-- Right: Story Text Crawl -->
+        <div class="story-text">
+            <template for:each={allLines} for:item="line">
+                <p key={line}>{line}</p>
+            </template>
+        </div>
+
+        <!-- Bottom-right: Thanksgiving Greetings -->
+        <template if:true={currentGreeting}>
+            <div class="thanksgiving-greeting">
+                <p>{currentGreeting}</p>
+            </div>
+        </template>
+    </div>
+</template>
