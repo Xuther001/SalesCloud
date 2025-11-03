@@ -7,7 +7,7 @@
   Generates a default Opportunity linked to the Account.
 
 - ⚡ **Lightning Web Components**  
-  Holiday Banners
+  Holiday Banners<br>
   Opportunity Calendar Component (For more details see "Opportunity Calendar Component" below)
 
 - 🛠 **Apex Triggers & Classes**  
