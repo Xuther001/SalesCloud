@@ -1,6 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import BAT_GIF from '@salesforce/resourceUrl/BatGif';
-import WITCH from '@salesforce/resourceUrl/WitchGif1';
+import WITCH from '@salesforce/resourceUrl/WitchGif';
 
 export default class HalloweenBats extends LightningElement {
     @track bats = [];
@@ -11,7 +11,6 @@ export default class HalloweenBats extends LightningElement {
     batGif = BAT_GIF;
     witchImg = WITCH;
 
-    // 🎃 Huge list of Halloween jokes
     jokes = [
         "Why don’t skeletons fight each other? They don’t have the guts!",
         "What’s a ghost’s favorite dessert? I scream!",
@@ -66,15 +65,12 @@ export default class HalloweenBats extends LightningElement {
     ];
 
     connectedCallback() {
-        // Spawn bats every 2 seconds
         this.spawnBats();
         setInterval(() => this.spawnBats(), 2000);
 
-        // Spawn witch every 10–15 seconds
         this.spawnWitch();
         setInterval(() => this.spawnWitch(), Math.random() * 5000 + 10000);
 
-        // Start rotating jokes
         this.startJokes();
     }
 
@@ -123,6 +119,6 @@ export default class HalloweenBats extends LightningElement {
         setInterval(() => {
             index = (index + 1) % this.jokes.length;
             this.currentJoke = this.jokes[index];
-        }, 25000); // match slower scroll
+        }, 25000);
     }
 }

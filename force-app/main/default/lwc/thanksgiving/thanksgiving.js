@@ -14,14 +14,6 @@ export default class ThanksgivingScene extends LightningElement {
     thanksgivingBg = THANKSGIVING_BG;
     squirrelsImg = SQUIRRELS;
 
-    allLines = [
-        'Under a starlit sky, a small pilgrim family gathers around a glowing campfire, their faces bathed in warmth and joy.',
-        'Beside them, a wagon overflows with freshly gathered harvest — pumpkins, fruits, and golden grains — a tribute to their hard work and gratitude.',
-        'They chat quietly around the campfire, preparing for the evening and the supper they will soon cook.',
-        'Laughter and soft conversation drift through the crisp night air as squirrels scamper nearby, curiously watching the activity.',
-        'It’s a peaceful night of appreciation and celebration of nature’s abundance.'
-    ];
-
     greetings = [
         "Happy Thanksgiving! Grateful for your support in making a difference in our community.",
         "Wishing you a joyful Thanksgiving filled with love, kindness, and hope.",
@@ -41,7 +33,6 @@ export default class ThanksgivingScene extends LightningElement {
     greetingStartTimeout;
 
     connectedCallback() {
-        this.startCrawlLoop();
         this.startGreetingsLoop();
     }
 
@@ -50,31 +41,13 @@ export default class ThanksgivingScene extends LightningElement {
         clearInterval(this.greetingInterval);
     }
 
-    startCrawlLoop() {
-        const crawl = this.template.querySelector('.story-text');
-        if (!crawl) return;
-
-        const animationDuration = 120000;
-        const delayBetweenCrawls = 60000;
-
-        const runCrawl = () => {
-            if (!crawl) return;
-            crawl.style.animation = 'none';
-            void crawl.offsetWidth;
-            crawl.style.animation = `crawlMove 120s linear forwards`;
-            setTimeout(runCrawl, animationDuration + delayBetweenCrawls);
-        };
-
-        runCrawl();
-    }
-
     startGreetingsLoop() {
         this.greetingStartTimeout = setTimeout(() => {
             this.showNextGreeting();
             this.greetingInterval = setInterval(() => {
                 this.showNextGreeting();
             }, 30000);
-        }, 60000);
+        }, 5000);
     }
 
     showNextGreeting() {

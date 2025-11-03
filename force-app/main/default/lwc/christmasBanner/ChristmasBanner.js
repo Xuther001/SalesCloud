@@ -1,11 +1,13 @@
 import { LightningElement, track } from 'lwc';
 import SANTA from '@salesforce/resourceUrl/SantaGif';
+import TREE from '@salesforce/resourceUrl/ChristmasTree';
 
 export default class ChristmasScene extends LightningElement {
     @track snowflakes = [];
     @track santa = null;
     flakeId = 0;
     santaImg = SANTA;
+    treeImg = TREE;
 
     connectedCallback() {
         this.spawnSnowflakes();

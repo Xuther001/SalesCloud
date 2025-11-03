@@ -6,12 +6,6 @@
         <img src={squirrelsImg} alt="Squirrels" class="squirrels"/>
         <img src={campfireImg} alt="Campfire" class="campfire"/>
 
-        <div class="story-text">
-            <template for:each={allLines} for:item="line">
-                <p key={line}>{line}</p>
-            </template>
-        </div>
-
         <template if:true={currentGreeting}>
             <div class="thanksgiving-greeting">
                 <p>{currentGreeting}</p>
@@ -19,3 +13,4 @@
         </template>
     </div>
 </template>
+

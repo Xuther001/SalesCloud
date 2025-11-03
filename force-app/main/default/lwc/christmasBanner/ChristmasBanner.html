@@ -1,21 +1,17 @@
 <template>
     <div class="christmas-container">
-        <!-- Glowing tree -->
-        <div class="tree"></div>
+        <img src={treeImg} alt="Christmas Tree" class="tree" />
 
-        <!-- Stars -->
         <div class="star star1"></div>
         <div class="star star2"></div>
         <div class="star star3"></div>
         <div class="star star4"></div>
         <div class="star star5"></div>
 
-        <!-- Snowflakes -->
         <template for:each={snowflakes} for:item="flake">
             <div key={flake.id} class="snowflake" style={flake.style}></div>
         </template>
 
-        <!-- Santa flying -->
         <template if:true={santa}>
             <img src={santaImg} class="santa" style={santa.style} />
         </template>

@@ -61,38 +61,6 @@
     z-index: 1;
 }
 
-.story-text {
-    position: absolute;
-    bottom: -50%;
-    left: 67%;
-    width: 30%;
-    color: #ffebc6;
-    font-family: 'Georgia', serif;
-    font-size: 1rem;
-    line-height: 1.7;
-    text-align: justify;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-    perspective: 500px;
-    transform-style: preserve-3d;
-
-    transform: rotateX(25deg);
-    animation: crawlMove 120s linear forwards;
-}
-
-.story-text p {
-    margin: 0 0 1rem 0;
-    opacity: 1;
-}
-
-@keyframes crawlMove {
-    0% {
-        transform: rotateX(25deg) translateY(100%);
-    }
-    100% {
-        transform: rotateX(25deg) translateY(-450%);
-    }
-}
-
 .thanksgiving-greeting {
     position: absolute;
     bottom: 10%;
