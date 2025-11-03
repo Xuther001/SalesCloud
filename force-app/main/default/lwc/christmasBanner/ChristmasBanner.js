@@ -1,5 +1,5 @@
 import { LightningElement, track } from 'lwc';
-import SANTA from '@salesforce/resourceUrl/SantaGif'; // your santa gif or sleigh image
+import SANTA from '@salesforce/resourceUrl/SantaGif';
 
 export default class ChristmasScene extends LightningElement {
     @track snowflakes = [];
@@ -8,11 +8,9 @@ export default class ChristmasScene extends LightningElement {
     santaImg = SANTA;
 
     connectedCallback() {
-        // Generate snowflakes continuously
         this.spawnSnowflakes();
         setInterval(() => this.spawnSnowflakes(), 300);
 
-        // Santa flies every 15–25 seconds
         this.spawnSanta();
         setInterval(() => this.spawnSanta(), Math.random() * 10000 + 15000);
     }

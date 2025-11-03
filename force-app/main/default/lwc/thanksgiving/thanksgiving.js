@@ -14,7 +14,6 @@ export default class ThanksgivingScene extends LightningElement {
     thanksgivingBg = THANKSGIVING_BG;
     squirrelsImg = SQUIRRELS;
 
-    // Scene crawl
     allLines = [
         'Under a starlit sky, a small pilgrim family gathers around a glowing campfire, their faces bathed in warmth and joy.',
         'Beside them, a wagon overflows with freshly gathered harvest — pumpkins, fruits, and golden grains — a tribute to their hard work and gratitude.',
@@ -23,7 +22,6 @@ export default class ThanksgivingScene extends LightningElement {
         'It’s a peaceful night of appreciation and celebration of nature’s abundance.'
     ];
 
-    // Thanksgiving greetings
     greetings = [
         "Happy Thanksgiving! Grateful for your support in making a difference in our community.",
         "Wishing you a joyful Thanksgiving filled with love, kindness, and hope.",
@@ -52,18 +50,17 @@ export default class ThanksgivingScene extends LightningElement {
         clearInterval(this.greetingInterval);
     }
 
-    // Scene crawl logic (unchanged)
     startCrawlLoop() {
         const crawl = this.template.querySelector('.story-text');
         if (!crawl) return;
 
-        const animationDuration = 120000; // 120s
-        const delayBetweenCrawls = 60000; // 1 min
+        const animationDuration = 120000;
+        const delayBetweenCrawls = 60000;
 
         const runCrawl = () => {
             if (!crawl) return;
             crawl.style.animation = 'none';
-            void crawl.offsetWidth; // trigger reflow
+            void crawl.offsetWidth;
             crawl.style.animation = `crawlMove 120s linear forwards`;
             setTimeout(runCrawl, animationDuration + delayBetweenCrawls);
         };
@@ -71,15 +68,13 @@ export default class ThanksgivingScene extends LightningElement {
         runCrawl();
     }
 
-    // New greetings loop
     startGreetingsLoop() {
-        // start after 1 minute
         this.greetingStartTimeout = setTimeout(() => {
             this.showNextGreeting();
             this.greetingInterval = setInterval(() => {
                 this.showNextGreeting();
-            }, 30000); // every 30 seconds
-        }, 60000); // 1 minute delay
+            }, 30000);
+        }, 60000);
     }
 
     showNextGreeting() {
@@ -87,7 +82,6 @@ export default class ThanksgivingScene extends LightningElement {
         this.greetingIndex = (this.greetingIndex + 1) % this.greetings.length;
     }
 
-    // Background style
     get backgroundStyle() {
         return `
             background-image: url(${this.thanksgivingBg});

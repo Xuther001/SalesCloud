@@ -1,24 +1,19 @@
 <template>
     <div class="halloween-container">
-        <!-- Moon -->
         <div class="moon"></div>
 
-        <!-- Clouds -->
         <div class="cloud cloud1"></div>
         <div class="cloud cloud2"></div>
         <div class="cloud cloud3"></div>
 
-        <!-- Bats -->
         <template for:each={bats} for:item="bat">
             <img key={bat.id} src={batGif} class="bat" style={bat.style} />
         </template>
 
-        <!-- Witch -->
         <template if:true={witch}>
             <img src={witchImg} class="witch" style={witch.style} />
         </template>
 
-        <!-- Scrolling Halloween Jokes -->
         <div class="joke-banner">
             <div class="joke-text">{currentJoke}</div>
         </div>

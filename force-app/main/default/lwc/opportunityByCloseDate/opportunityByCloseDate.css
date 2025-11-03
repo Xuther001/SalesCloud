@@ -50,10 +50,10 @@
 }
 
 /* Bucket colors */
-.opportunity.within2Weeks { background-color: #FFEBEE; }       /* Light red */
-.opportunity.twoWeeksTo1Month { background-color: #FFF3E0; }   /* Light orange */
-.opportunity.oneTo3Months { background-color: #E8F5E9; }       /* Light green */
-.opportunity.threeTo6Months { background-color: #E3F2FD; }     /* Light blue */
+.opportunity.within2Weeks { background-color: #FFEBEE; }
+.opportunity.twoWeeksTo1Month { background-color: #FFF3E0; }
+.opportunity.oneTo3Months { background-color: #E8F5E9; }
+.opportunity.threeTo6Months { background-color: #E3F2FD; }
 
 .opportunity:hover { background-color: #cfd8dc; }
 
@@ -61,7 +61,6 @@
     vertical-align: top;
 }
 
-/* Optional scroll styling for long lists */
 .opportunity-list::-webkit-scrollbar {
     width: 6px;
 }
