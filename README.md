@@ -8,7 +8,7 @@
 
 - ⚡ **Lightning Web Components**  
   Holiday Banners (For more details see "Holiday Banners" below)<br>
-  Opportunity Calendar Component (For more details see "Opportunity Calendar Component" below)
+  Opportunity Calendar Component (For more details see "Opportunity Calendar Component" below)<br>
   Grant Confetti
 
 - 🛠 **Apex Triggers & Classes**  
