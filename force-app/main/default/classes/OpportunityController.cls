@@ -20,7 +20,6 @@ public with sharing class OpportunityController {
         for (Opportunity opp : opps) {
             Integer daysRemaining = today.daysBetween(opp.CloseDate);
 
-            // Format CloseDate (YYYY-MM-DD)
             String monthStr = opp.CloseDate.month() < 10 ? '0' + opp.CloseDate.month() : String.valueOf(opp.CloseDate.month());
             String dayStr   = opp.CloseDate.day()   < 10 ? '0' + opp.CloseDate.day()   : String.valueOf(opp.CloseDate.day());
             String closeDateStr = opp.CloseDate.year() + '-' + monthStr + '-' + dayStr;
@@ -47,5 +46,24 @@ public with sharing class OpportunityController {
         }
 
         return buckets;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static Decimal getMonthlyAwardedTotal() {
+        Date firstDay = Date.newInstance(Date.today().year(), Date.today().month(), 1);
+        Date lastDay = firstDay.addMonths(1).addDays(-1);
+
+        AggregateResult[] results = [
+            SELECT SUM(Amount) total
+            FROM Opportunity
+            WHERE StageName = 'Closed Won'
+            AND CloseDate >= :firstDay
+            AND CloseDate <= :lastDay
+        ];
+
+        Decimal total = (results.size() > 0 && results[0].get('total') != null)
+            ? (Decimal)results[0].get('total')
+            : 0;
+        return total;
     }
 }

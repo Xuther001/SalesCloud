@@ -47,4 +47,34 @@ private class OpportunityControllerTest {
         System.assertEquals('Opportunity 1 to 3 Months', result.get('Over 1 month to 3 Months')[0].get('opportunityName'));
         System.assertEquals('Opportunity 3 to 6 Months', result.get('Over 3 months to 6 Months')[0].get('opportunityName'));
     }
+
+    @IsTest
+    static void testGetMonthlyAwardedTotal() {
+        Date firstDay = Date.newInstance(Date.today().year(), Date.today().month(), 1);
+        Date midMonth = firstDay.addDays(10);
+        Date nextMonth = firstDay.addMonths(1).addDays(5);
+
+        Opportunity oppCurrentMonth = new Opportunity(
+            Name = 'Closed Won This Month',
+            StageName = 'Closed Won',
+            CloseDate = midMonth,
+            Amount = 50000
+        );
+
+        Opportunity oppNextMonth = new Opportunity(
+            Name = 'Closed Won Next Month',
+            StageName = 'Closed Won',
+            CloseDate = nextMonth,
+            Amount = 99999
+        );
+
+        insert new List<Opportunity>{ oppCurrentMonth, oppNextMonth };
+
+        Test.startTest();
+        Decimal total = OpportunityController.getMonthlyAwardedTotal();
+        Test.stopTest();
+
+        System.assertNotEquals(null, total, 'Total should not be null');
+        System.assertEquals(50000, total, 'Should only include Closed Won opportunities within the current month');
+    }
 }
