@@ -12,7 +12,7 @@
   Grant Confetti
 
 - 🛠 **Apex Triggers & Classes**  
-  Bulk-safe backend logic for reliable automation.
+  Bulk-safe backend logic for reliable automation.<br>
   Includes comprehensive test classes ensuring high code coverage and reliable deployment.
   
 ---
